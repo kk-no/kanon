@@ -102,3 +102,21 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# vscode config
+/.vscode
+
+# Kifu
+kifu/
+
+# .pickle
+*.pickle
+
+# model
+model/model_policy_value_resnet
+model/state_policy_value_resnet
+
+# log
+bat/log/game/log.txt
+log/game/log.txt
+log/train/log.txt
