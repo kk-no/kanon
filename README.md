@@ -1,7 +1,7 @@
 # kanon
 Python Deep Learning Shogi
 
-## 開発環境
+## 実装環境
 - Windows10 Home 64bit
 - Visual Studio 2017 (C++ BuildTool)
 - Python 3.7.1 (Anaconda3 64bit)
