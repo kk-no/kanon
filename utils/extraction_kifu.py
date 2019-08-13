@@ -9,6 +9,9 @@ move = 75
 kifu_dir = "D:\develop\shogi\script\kif"
 #=====================================
 
+# 将棋倶楽部24の棋譜からレーティング含む対局情報を取得
+# 手数・レーティングなどの条件により抽出
+
 def find_all_files(directory):
     for root, dirs, files in os.walk(directory):
         for file in files:
@@ -70,8 +73,10 @@ kifu_count = 0
 for filepath in find_all_files(kifu_dir):
     kifu = read_kifu(filepath)
     if int(kifu["rate"][0]) < rating or int(kifu["rate"][1]) < rating or int(kifu["move"]) < move:
+        # 条件に合わない場合は削除する
         os.remove(filepath)
     else:
+        # 一致した棋譜をカウント
         kifu_count += 1
 
 # 抽出結果出力
