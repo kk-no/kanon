@@ -11,6 +11,7 @@ kifu_dir = "D:\develop\shogi\script\kif"
 
 # 将棋倶楽部24の棋譜からレーティング含む対局情報を取得
 # 手数・レーティングなどの条件により抽出
+# TODO: 棋譜内容の取得
 
 def find_all_files(directory):
     for root, dirs, files in os.walk(directory):
