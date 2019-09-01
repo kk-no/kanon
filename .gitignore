@@ -108,6 +108,7 @@ venv.bak/
 
 # Kifu
 kifu/
+kifu_list/
 
 # .pickle
 *.pickle

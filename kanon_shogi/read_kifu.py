@@ -49,6 +49,55 @@ def read_kif(kifu_list_files):
                 board.push_usi(move)
     return positions
 
+# KIF形式(将棋倶楽部24)
+# winは「までn手で先手の勝ち」の文言が必要
+def read_kif24():
+    positions = []
+    # with open(kifu_list_files, "r") as f:
+    with open("kifu_list\\kifu_list.txt", "r") as f:
+        for line in f.readlines():
+            #rstrip:指定文字列の削除
+            filepath = line.rstrip("\r\n")
+            kifu = shogi.KIF.Parser.parse_file(filepath)[0]
+            # レーティング情報の追加
+            kifu["rate"] = [0, 0]
+            # アカウント名のみ抽出
+            kifu["names"][0], kifu["rate"][0] = kifu["names"][0].rstrip(")").split("(")
+            kifu["names"][1], kifu["rate"][1] = kifu["names"][1].rstrip(")").split("(")
+            break
+            #条件式が真の場合の値 if 条件式 else 条件式が偽の場合の値
+            win_color = shogi.BLACK if kifu["win"] == "b" else shogi.WHITE
+            board = shogi.Board()
+            for move in kifu["moves"]:
+                #盤面の回転(後手番の場合180度回転)
+                if board.turn == shogi.BLACK:
+                    #先手番
+                    piece_bb = copy.deepcopy(board.piece_bb)
+                    occupied = copy.deepcopy(
+                        (board.occupied[shogi.BLACK]
+                        ,board.occupied[shogi.WHITE]))
+                    piece_in_hand = copy.deepcopy(
+                        (board.pieces_in_hand[shogi.BLACK]
+                        ,board.pieces_in_hand[shogi.WHITE]))
+                else:
+                    #後手番
+                    piece_bb = [bb_rotate_180(bb) for bb in board.piece_bb]
+                    occupied = (bb_rotate_180(board.occupied[shogi.WHITE]),
+                                bb_rotate_180(board.occupied[shogi.BLACK]))
+                    piece_in_hand = copy.deepcopy(
+                        (board.pieces_in_hand[shogi.WHITE]
+                        ,board.pieces_in_hand[shogi.BLACK]))
+
+                #指し手ラベル
+                move_label = make_output_label(shogi.Move.from_usi(move), board.turn)
+
+                #結果
+                win = 1 if win_color == board.turn else 0
+
+                positions.append((piece_bb, occupied, piece_in_hand, move_label, win))
+                board.push_usi(move)
+    return positions
+
 # CSA形式
 def read_csa(kifu_list_files):
     positions = []

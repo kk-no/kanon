@@ -10,15 +10,11 @@ import random
 
 #コマンド引数設定
 parser = argparse.ArgumentParser()
-#parser.add_argument("dir", type = str)
-#parser.add_argument("filename", type = str)
 parser.add_argument("--filetype", type = str, default = "kif")
 parser.add_argument("--ratio", type = float, default = 0.9)
 args = parser.parse_args()
 
 #棋譜保存ディレクトリ
-# kifu_dir = "D:\project\kanon\kifu\csa"
-# kifu_dir = "D:\project\kanon\kifu\kif"
 kifu_dir = "D:\project\kanon\kifu\{}".format(args.filetype)
 #出力ファイル名
 file_name = "kifulist{0:%Y%m%d}".format(datetime.now())
