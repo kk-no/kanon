@@ -50,7 +50,7 @@ def read_kif(kifu_list_files):
     return positions
 
 # KIF形式(将棋倶楽部24)
-# winは「までn手で先手の勝ち」の文言が必要
+# kifu24_add_win.pyの処理後に実行する
 def read_kif24():
     positions = []
     # with open(kifu_list_files, "r") as f:
@@ -64,7 +64,6 @@ def read_kif24():
             # アカウント名のみ抽出
             kifu["names"][0], kifu["rate"][0] = kifu["names"][0].rstrip(")").split("(")
             kifu["names"][1], kifu["rate"][1] = kifu["names"][1].rstrip(")").split("(")
-            break
             #条件式が真の場合の値 if 条件式 else 条件式が偽の場合の値
             win_color = shogi.BLACK if kifu["win"] == "b" else shogi.WHITE
             board = shogi.Board()
