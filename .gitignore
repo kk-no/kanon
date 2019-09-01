@@ -120,3 +120,6 @@ model/state_policy_value_resnet
 bat/log/game/log.txt
 log/game/log.txt
 log/train/log.txt
+
+# history
+.python_history

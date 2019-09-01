@@ -4,10 +4,10 @@ Python Deep Learning Shogi
 ## 実装環境
 - Windows10 Home 64bit
 - Visual Studio 2017 (C++ BuildTool)
-- Python 3.7.1 (Anaconda3 64bit)
-- Chainer 6.0.0
+- Python 3.6.9 (Miniconda3 64bit)
+- Chainer 5.3.0
 - Cuda 9.1
-- Cupy 6.0.0 (cupy-cuda91 6.0.0)
+- Cupy 6.2.0 (cupy-cuda91 6.0.0)
 
 ## 環境構築
 - Python3 インストール (64bit版)
