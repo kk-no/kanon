@@ -10,7 +10,7 @@ import random
 
 #コマンド引数設定
 parser = argparse.ArgumentParser()
-parser.add_argument("--filetype", type = str, default = "kif")
+parser.add_argument("--filetype", type = str, default = "kif24")
 parser.add_argument("--ratio", type = float, default = 0.9)
 args = parser.parse_args()
 
@@ -29,17 +29,24 @@ random.shuffle(kifu_list)
 
 #訓練データとテストデータに分けて保存
 train_len = int(len(kifu_list) * args.ratio)
-#訓練データの保存
-with open(file_name + "_train.txt", "w") as f:
-    for i in range(train_len):
-        f.write(kifu_list[i])
-        f.write("\n")
+with open("kifu_list\\kifu_list.txt", "w") as k:
+    #訓練データの保存
+    with open(file_name + "_train.txt", "w") as f:
+        for i in range(train_len):
+            k.write(kifu_list[i])
+            k.write("\n")
 
-#テストデータの保存
-with open(file_name + "_test.txt", "w") as f:
-    for i in range(train_len, len(kifu_list)):
-        f.write(kifu_list[i])
-        f.write("\n")
+            f.write(kifu_list[i])
+            f.write("\n")
+
+    #テストデータの保存
+    with open(file_name + "_test.txt", "w") as f:
+        for i in range(train_len, len(kifu_list)):
+            k.write(kifu_list[i])
+            k.write("\n")
+
+            f.write(kifu_list[i])
+            f.write("\n")
 
 print("total kifu num = {}".format(len(kifu_list)))
 print("train kifu num = {}".format(train_len))
