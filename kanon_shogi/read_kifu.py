@@ -50,11 +50,10 @@ def read_kif(kifu_list_files):
     return positions
 
 # KIF形式(将棋倶楽部24)
-# kifu24_add_win.pyの処理後に実行する
-def read_kif24():
+# 勝敗判定ができないため、kifu24_add_win.pyの処理後に実行する
+def read_kif24(kifu_list_files):
     positions = []
-    # with open(kifu_list_files, "r") as f:
-    with open("kifu_list\\kifu_list.txt", "r") as f:
+    with open(kifu_list_files, "r") as f:
         for line in f.readlines():
             #rstrip:指定文字列の削除
             filepath = line.rstrip("\r\n")

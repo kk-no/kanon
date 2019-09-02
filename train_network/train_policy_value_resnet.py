@@ -133,7 +133,8 @@ if os.path.exists(train_pickle_filename):
     logging.info("load train pickle")
 else:
     # positions_train = read_csa(args.kifulist_train)
-    positions_train = read_kif(args.kifulist_train)
+    # positions_train = read_kif(args.kifulist_train)
+    positions_train = read_kif24(args.kifulist_train)
 
 #テストデータ
 test_pickle_filename = re.sub(r"\..*?$", "", args.kifulist_test) + ".pickle"
@@ -225,9 +226,11 @@ for e in range(args.epoch):
         itr_test += 1
         sum_test_accuracy1 += F.accuracy(y1, t1).data
         sum_test_accuracy2 += F.binary_accuracy(y2, t2).data
+    # log
     logging.info("epoch = {}, iteration = {}, train loss avr = {}, test accuracy = {}".format(
         optimizer.epoch + 1, optimizer.t, sum_loss_epoch / itr_epoch,
-        sum_test_accuracy1 / itr_test, sum_test_accuracy2 / itr_test))
+        sum_test_accuracy1 / itr_test, sum_test_accuracy2 / itr_test)
+    )
     #次エポックの処理へ
     optimizer.new_epoch()
 

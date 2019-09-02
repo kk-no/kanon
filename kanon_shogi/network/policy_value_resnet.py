@@ -13,15 +13,19 @@ class Block(Chain):
     def __init__(self):
         super(Block, self).__init__()
         with self.init_scope():
-            self.conv1 = L.Convolution2D(in_channels = ch,
-                                            out_channels = ch,
-                                            ksize = 3,
-                                            pad = 1, nobias = True)
+            self.conv1 = L.Convolution2D(
+                in_channels = ch,
+                out_channels = ch,
+                ksize = 3,
+                pad = 1, nobias = True
+            )
             self.bn1 = L.BatchNormalization(ch)
-            self.conv2 = L.Convolution2D(in_channels = ch,
-                                            out_channels = ch,
-                                            ksize = 3,
-                                            pad = 1, nobias = True)
+            self.conv2 = L.Convolution2D(
+                in_channels = ch,
+                out_channels = ch,
+                ksize = 3,
+                pad = 1, nobias = True
+            )
             self.bn2 = L.BatchNormalization(ch)
 
     def __call__(self, x):
@@ -34,18 +38,27 @@ class PolicyValueResnet(Chain):
         super(PolicyValueResnet, self).__init__()
         self.blocks = blocks
         with self.init_scope():
-            self.l1 = L.Convolution2D(in_channels = 104, out_channels = ch, ksize = 3, pad = 1)
+            self.l1 = L.Convolution2D(
+                in_channels = 104,
+                out_channels = ch,
+                ksize = 3,
+                pad = 1
+            )
             for i in range(1, blocks):
                 self.add_link("b{}".format(i), Block())
             #policy network
-            self.lpolicy = L.Convolution2D(in_channels = ch,
-                                            out_channels = MOVE_DIRECTION_LABEL_NUM,
-                                            ksize = 1, nobias = True)
+            self.lpolicy = L.Convolution2D(
+                in_channels = ch,
+                out_channels = MOVE_DIRECTION_LABEL_NUM,
+                ksize = 1, nobias = True
+            )
             self.lpolicy_bias = L.Bias(shape=(9 * 9 * MOVE_DIRECTION_LABEL_NUM))
             #value network
-            self.lvalue1 = L.Convolution2D(in_channels = ch,
-                                            out_channels = MOVE_DIRECTION_LABEL_NUM,
-                                            ksize = 1)
+            self.lvalue1 = L.Convolution2D(
+                in_channels = ch,
+                out_channels = MOVE_DIRECTION_LABEL_NUM,
+                ksize = 1
+            )
             self.lvalue2 = L.Linear(9 * 9 * MOVE_DIRECTION_LABEL_NUM, fcl)
             self.lvalue3 = L.Linear(fcl, 1)
 

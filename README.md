@@ -27,13 +27,25 @@ $ python -c "import chainer; chainer.print_runtime_info()"
 ```
 $ pip install --no-cache-dir -e .
 ```
+- 学習コマンド
+```
+# 棋譜抽出
+$ python utils\filter_csa.py
+$ python utils\extraction_kifu.py
+
+# 棋譜一覧作成
+$ python utils\make_kifu_list.py
+
+# 学習実行
+$ python train_network\train_policy_value_resnet.py kifulist_train.txt kifulist_test.txt
+```
 - 実行コマンド
 ```
 # CPU版実行
-python -m kanon_shogi.usi.mcts_cpu_player
+$ python -m kanon_shogi.usi.mcts_cpu_player
 
 # GPU版実行
-python -m kanon_shogi.usi.mcts_gpu_player
+$ python -m kanon_shogi.usi.mcts_gpu_player
 
 # 初期化コマンド
 $ isready
@@ -46,9 +58,11 @@ $ go
 ```
 
 ## やる事
-- 倶楽部24の棋譜を読み込めるようにする(対局情報・棋譜)
+- 倶楽部24の棋譜を読み込めるようにする(Done)
 - 倶楽部24の棋譜をディレクトリ上でレーティング絞り込み(Done)
 - 自己対局機能追加
-- ライブラリのアップデート(cython)
 - KIF形式での対局棋譜出力
 - 強化学習
+
+## やりたい事
+- ライブラリのアップデート(cython)
