@@ -17,7 +17,7 @@ args = parser.parse_args()
 #棋譜保存ディレクトリ
 kifu_dir = "D:\project\kanon\kifu\{}".format(args.filetype)
 #出力ファイル名
-file_name = "kifulist{0:%Y%m%d}".format(datetime.now())
+file_name = "kifu_list\\kifulist{0:%Y%m%d}".format(datetime.now())
 
 kifu_list = []
 for root, dirs, files in os.walk(kifu_dir):
