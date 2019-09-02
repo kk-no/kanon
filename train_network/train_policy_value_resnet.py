@@ -134,7 +134,7 @@ if os.path.exists(train_pickle_filename):
 else:
     # positions_train = read_csa(args.kifulist_train)
     # positions_train = read_kif(args.kifulist_train)
-    positions_train = read_kif24(args.kifulist_train)
+    positions_train = read_kif24("kifu_list\\" + args.kifulist_train)
 
 #テストデータ
 test_pickle_filename = re.sub(r"\..*?$", "", args.kifulist_test) + ".pickle"
@@ -145,7 +145,7 @@ if os.path.exists(test_pickle_filename):
     logging.info("load test pickle")
 else:
     # positions_test = read_csa(args.kifulist_test)
-    positions_test = read_kif(args.kifulist_test)
+    positions_test = read_kif("kifu_list\\" + args.kifulist_test)
 
 if not os.path.exists(train_pickle_filename):
     with open(train_pickle_filename, "wb") as f:
