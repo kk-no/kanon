@@ -36,6 +36,9 @@ $ python utils\extraction_kifu.py
 # 棋譜一覧作成
 $ python utils\make_kifu_list.py
 
+# 24形式の棋譜を読む場合一度だけ実行(勝敗の追記)
+$ python utils\kifu24_add_win.py
+
 # 学習実行
 $ python train_network\train_policy_value_resnet.py kifulist_train.txt kifulist_test.txt
 ```
