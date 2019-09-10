@@ -124,3 +124,7 @@ log/train/log.txt
 
 # history
 .python_history
+
+# local batch
+bat/kanon_gpu_local.bat
+bat/kanon_cpu_local.bat
