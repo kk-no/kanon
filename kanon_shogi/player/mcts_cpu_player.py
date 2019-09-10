@@ -47,7 +47,7 @@ class MCTSCpuPlayer(BasePlayer):
     def __init__(self):
         super().__init__()
         #モデルファイル
-        self.modelfile = r"D:\project\kanon\model\model_policy_value_resnet"
+        self.modelfile = r"D:\\project\\kanon\\model\\model_policy_value_resnet"
         self.model = None
 
         #ノードの情報

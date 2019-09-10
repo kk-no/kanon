@@ -7,7 +7,7 @@ def usi(player):
     logging.basicConfig(
         format = "%(asctime)s\t%(levelname)s\t%(message)s",
         datefmt = "%Y/%m/%d %H:%M:%S",
-        filename = "log\game\log.txt",
+        filename = "log\\game\\log.txt",
         level = logging.DEBUG
     )
     while True:
